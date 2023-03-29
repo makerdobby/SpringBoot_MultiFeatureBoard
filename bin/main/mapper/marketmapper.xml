@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.thymeleaf.test.dao.MarketMapper">
+
+	<select id="select01" resultType="com.thymeleaf.test.vo.MarketVo">
+		/** MarketMapper.select01 */
+		SELECT
+			  P_ID AS pId
+			, P_CAT_ID AS pCatId
+			, P_TITLE AS pTitle
+			, P_PRICE AS pPrice
+			, P_FROM_DT AS pFromDt
+			, P_TO_DT AS pToDt
+			, P_THUMB_IMG AS pThumbImg
+			, P_DETAIL_IMG AS pDetailImg
+			, P_BRAND_NAME AS pBrandName
+			, P_REGI_DT AS pRegiDt
+		FROM
+			PRODUCT
+	</select>
+
+	<select id="select02" resultType="java.lang.String">
+		/** MarketMapper.select02 */
+		SELECT
+			CAT_L
+		FROM CATEGORY
+		GROUP BY CAT_L
+	</select>
+
+	<select  id="select03" resultType="java.lang.String">
+		/** MarketMapper.select03 */
+		SELECT
+			CAT_M
+		FROM CATEGORY
+		GROUP BY CAT_L
+	</select>
+
+	<select  id="select04" resultType="java.lang.String">
+		/** MarketMapper.select04 */
+		SELECT
+			CAT_S
+		FROM CATEGORY
+		GROUP BY CAT_S
+	</select>
+
+
+
+</mapper>

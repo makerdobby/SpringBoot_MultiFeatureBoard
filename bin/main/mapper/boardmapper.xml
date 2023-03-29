@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.thymeleaf.test.dao.BoardMapper">
+
+	<select id="select03" resultType="Integer">
+		SELECT
+			count(B_ID)
+		 FROM
+		 	BOARD
+	</select>
+
+	<!-- [2023.03.29] 날짜 단순하게 변환하여 추가 -->
+	<select id="select04" resultType="com.thymeleaf.test.vo.BoardVo" parameterType="java.util.Map">
+
+		SELECT
+			 B_ID AS bId
+			,B_TITLE AS bTitle
+			,B_CONT AS bCont
+			,B_MAN AS bMan
+			,LEFT(B_DT,10) AS bDt
+		 FROM
+		 	BOARD
+		 ORDER BY
+		 	B_ID DESC
+		 LIMIT
+		 	#{startRow}, #{pageSize}
+
+	</select>
+
+	<select id="select05" resultType="com.thymeleaf.test.vo.BoardVo" parameterType="Integer">
+		SELECT
+			 B_ID AS bId
+			,B_TITLE AS bTitle
+			,B_CONT AS bCont
+			,B_MAN AS bMan
+			,B_DT AS bDt
+		 FROM
+		 	BOARD
+		 WHERE
+			B_ID = #{bId}
+	</select>
+
+	<select id="select06" resultType="String" parameterType="com.thymeleaf.test.vo.UserVo">
+		/* select06 : 비번 일치 여부를 확인하기 위해, NAME으로  */
+		 SELECT
+			  USER_PW
+		 FROM
+		  	  USER
+		 WHERE
+			  USER_NAME = #{userName}
+		 Limit
+			  1
+	</select>
+
+	<select id="select07" resultType="Integer" parameterType="com.thymeleaf.test.vo.UserVo">
+		/* select07 : 기존 가입여부를 알기 위해, NAME으로 검색해서 나온 결과 갯수 SELECT */
+		SELECT
+			count(*)
+		 FROM
+		 	USER
+		 WHERE
+			USER_NAME = #{userName}
+	</select>
+
+	<select id="select08" resultType="com.thymeleaf.test.vo.TestVo">
+		/* select08 : test내용 ID빼고 SELECT */
+		SELECT
+			  ID AS id
+			, NAME AS name
+		 FROM
+		 	TEST
+	</select>
+
+	<update id="update01" parameterType="com.thymeleaf.test.vo.BoardVo">
+		UPDATE
+			  BOARD
+		SET
+			  B_TITLE=#{bTitle}
+			, B_CONT=#{bCont}
+			, B_MAN=#{bMan}
+		WHERE
+			  B_ID=#{bId}
+
+	</update>
+
+	<delete id="delete01" parameterType="com.thymeleaf.test.vo.BoardVo">
+		DELETE FROM
+			board
+		WHERE
+			B_ID=#{bId}
+	</delete>
+
+	<insert id="insert01" parameterType="com.thymeleaf.test.vo.BoardVo">
+		INSERT INTO
+			BOARD(
+				  B_TITLE
+				, B_CONT
+				, B_MAN
+				)
+			VALUES(
+				  #{bTitle}
+				, #{bCont}
+				, #{bMan}
+				)
+	</insert>
+
+	<insert id="insert02" parameterType="com.thymeleaf.test.vo.UserVo">
+
+		INSERT INTO
+			USER(
+				  USER_NAME
+				, USER_IN
+				, USER_PW
+				)
+			VALUES(
+				  #{userName}
+				, #{userIn}
+				, #{userPw}
+				)
+	</insert>
+
+	<insert id="insert03" parameterType="com.thymeleaf.test.vo.TestVo">
+
+		INSERT INTO
+			TEST(
+				  ID
+				, NAME
+				)
+			VALUES(
+				  #{id}
+				, #{name}
+				)
+	</insert>
+
+
+</mapper>

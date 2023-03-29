@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<!-- META 변수는 title명 -->
+	<head th:replace="comn/meta :: meta('Home')">
+	</head>
+	<body class="d-flex flex-column">
+		<!-- HEADER 변수는 메뉴이름 -->
+		<header th:replace="comn/header :: header('Home')" ></header>
+
+		<!-- CONTENT -->
+		<div id="page-content">
+		<div class="h-25"></div>
+		<div class="w-75 d-grid gap-2 d-md-flex justify-content-md-end mb-5">
+
+			<form name="fileFrm" action="/fileUpload"  method="post" enctype="multipart/form-data" class="w-50">
+				<h1>파일 업로드</h1>
+				<h5 class="text-secondary h-25">엑셀 파일을 업로드하면 DB에 정보가 들어간다</h5>
+				<input name="data" type="file" />
+				<button type="submit">업로드</button>
+			</form>
+
+			<form  class="w-50">
+				<h1>파일 다운로드</h1>
+				<h5 class="text-secondary h-25">DB의 내용을 그대로 엑셀로 다운받아준다</h5>
+				<a class="btn btn-secondary" href="/fileDownload" download>다운로드</a>
+			</form>
+		</div>
+		</div>
+
+		<!-- FOOTER -->
+		<footer th:replace="comn/footer :: footer"></footer>
+
+	</body>
+</html>

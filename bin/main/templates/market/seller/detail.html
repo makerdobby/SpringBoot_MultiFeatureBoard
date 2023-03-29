@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<!-- META 변수는 title명 -->
+	<head th:replace="comn/meta :: meta('Market')">
+	</head>
+	<body class="d-flex flex-column">
+		<!-- HEADER 변수는 메뉴이름 -->
+		<header th:replace="comn/header :: header('Market')" ></header>
+		<!-- CONTENT -->
+		<div id="page-content">
+
+			<h1 class="mb-5">상품 상세</h1>
+
+			<div class="d-grid gap-2 d-md-flex justify-content-md-end mb-5"  id="categories">
+				<button type="button" class="btn btn-outline-info" onclick="goMarketHome()">목록</button>
+				<button type="submit" class="btn btn-outline-info" form="bFrm01">수정</button>
+				<button type="button" class="btn btn-outline-info" onclick="doMarketDelete()">삭제</button>
+			</div>
+			<div class="text-start text-muted fs-6">뷰티 > 페이스 > 디바이스  </div>
+			<div class="d-flex gap-2 d-md-flex justify-content-md-end">
+				<img src="/images/thumbnail/AGR_EMS.jpg" />
+				<div class="text-start">
+					<div>메디힐</div>
+					<div><h2>메디큐브 에이지알 더마 EMS 샷 + 전용 탄력 부스터 거치대 세트</h2></div>
+					<div><h3 class="text-info fw-bold">419,900원</h3></div>
+					<h1 class="h-50">&nbsp;</h1>
+					<div class="d-grid gap-2 d-md-flex justify-content-md-start">
+						<div class="w-13"> <input class='form-control' type="number" placeholder="수량"/></div>
+						<div> <a href="/market" class="btn btn-outline-primary">장바구니 담기</a></div>
+						<div class="w-50"> <a href="/market" class="btn btn-primary">바로구매 &gt;</a></div>
+					</div>
+				</div>
+			</div>
+			<div class="bg-light">
+				<ul class="nav nav-tabs nav-fill position-sticky top-0 bg-white">
+					<li class="nav-item">
+					  <a class="nav-link text-black" aria-current="page" href="#product_detail">상품상세</a>
+					</li>
+					<li class="nav-item">
+					  <a class="nav-link text-black" href="#product_review">구매후기</a>
+					</li>
+				</ul>
+				<h1 id="product_detail">&nbsp; </h1>
+				<div>
+					<img src="/images/detail/EMS/1.jpg" />
+					<img src="/images/detail/EMS/4.jpg" />
+				</div>
+				<div id="product_review">
+					<h1> &nbsp;</h1>
+					<h1>상품 리뷰입니다</h1>
+					<h1>상품 리뷰입니다</h1>
+					<h1>상품 리뷰입니다</h1>
+					<h1>상품 리뷰입니다</h1>
+					<h1>상품 리뷰입니다</h1>
+					<h1>상품 리뷰입니다</h1>
+					<h1>상품 리뷰입니다</h1>
+					<h1>상품 리뷰입니다</h1>
+					<h1>상품 리뷰입니다</h1>
+					<h1>상품 리뷰입니다</h1>
+					<h1>상품 리뷰입니다</h1>
+				</div>
+				<a class="position-fixed bottom-0 end-0 btn btn-outline-warning" role="button" href="#categories">맨위로</a>
+			</div>
+		</div>
+
+		<!-- FOOTER -->
+		<footer th:replace="comn/footer :: footer"></footer>
+
+	</body>
+</html>

@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<!-- META 변수는 title명 -->
+	<head th:replace="comn/meta :: meta('Board')">
+	</head>
+	<body class="d-flex flex-column">
+		<!-- HEADER 변수는 메뉴이름 -->
+		<header th:replace="comn/header :: header('Board')" ></header>
+		<!-- CONTENT -->
+		<div id="page-content">
+			<h1 class="mb-5" th:text="|게 시 판|">게 시 판</h1>
+
+			<div class="w-75 d-grid gap-2 d-md-flex justify-content-md-end mb-5">
+				<button type="button" class="btn btn-warning" onclick="goBoardInput()">등록</button>
+			</div>
+
+
+			<!-- Test -->
+			<div class="d-none">
+			<form th:action = "@{/board/test}">
+				<input name="voList[0].bTitle" value="제목1"/>
+				<input name="voList[0].bCont"  value="내용1"/>
+
+				<input name="voList[1].bTitle" value="제목2" />
+				<input name="voList[1].bCont"  value="내용2" />
+
+				<button type="submit" class="btn btn-info">전송!</button>
+			</form>
+			</div>
+			<!-- Test -->
+
+			<table class="table table-hover w-50 m-auto">
+				<colgroup>
+					<col class="col-md-1"/>
+					<col class="col-md-4"/>
+					<col class="col-md-2"/>
+					<col class="col-md-8"/>
+				</colgroup>
+				<tr>
+					<th>번호</th>
+					<th>날짜</th> <!-- [2023.03.29] 날짜 추가 -->
+					<th>작성자</th>
+					<th>제목</th>
+				</tr>
+				<tbody class="text-secondary">
+					<tr th:each="vl : ${voList}">
+						<th th:text="${vl.bId}">번호</th>
+						<th th:text="${vl.bDt}">날짜</th> <!-- [2023.03.29] 날짜 추가 -->
+						<th th:text="${vl.bMan}">작성자</th>
+						<th><a class="link-secondary" th:text="${vl.bTitle}" th:href="@{/board/detail(bId=${vl.bId})}">제목</a></th>
+					</tr>
+				</tbody>
+
+			</table>
+			<nav aria-label="navigation" class="mt-5">
+			  <ul class="pagination  m-auto w-25">
+				<th:block th:each="i: ${#numbers.sequence(1, lastPage, 1)}">
+				    <li class="page-item"><a class="page-link text-warning" th:href="@{/board(curPage=${i})}" th:text="${i}">1</a></li>
+				</th:block>
+
+			  </ul>
+			</nav>
+
+		</div>
+
+		<!-- FOOTER -->
+		<footer th:replace="comn/footer :: footer"></footer>
+
+	</body>
+</html>

@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+html,
+body {
+  height: 100%;
+}
+
+body{
+
+	background: white;
+}
+
+#page-content {
+  flex: 1 0 auto;
+  text-align : center;
+  width : 75%;
+  margin : auto;
+}
+
+textarea{
+	resize : none;
+}
+
+#page-content2 {
+  flex: 1 0 auto;
+  text-align : center;
+  width : 35%;
+  margin : auto;
+}
+
+.background{
+	width : 100%;
+	height : 100%;
+}
+
+.center-sub{
+	display : flex;
+	align-items : center;
+	text-align : center;
+}
+
+.center{
+	width : 100%;
+
+}

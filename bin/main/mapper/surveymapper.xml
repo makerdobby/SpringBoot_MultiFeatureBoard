@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.thymeleaf.test.dao.SurveyMapper">
+
+	<select id="select04" resultType="com.thymeleaf.test.vo.SurveyVo">
+		SELECT
+			 B_ID AS bId
+			,B_TITLE AS bTitle
+			,B_CONT AS bCont
+			,B_MAN AS bMan
+			,B_DT AS bDt
+		 FROM
+		 	BOARD
+	</select>
+
+	<select id="select05" resultType="com.thymeleaf.test.vo.SurveyVo" parameterType="Integer">
+		SELECT
+			 B_ID AS bId
+			,B_TITLE AS bTitle
+			,B_CONT AS bCont
+			,B_MAN AS bMan
+			,B_DT AS bDt
+		 FROM
+		 	BOARD
+		 WHERE
+			B_ID = #{bId}
+	</select>
+
+	<update id="update01" parameterType="com.thymeleaf.test.vo.SurveyVo">
+		UPDATE
+			  BOARD
+		SET
+			  B_TITLE=#{bTitle}
+			, B_CONT=#{bCont}
+			, B_MAN=#{bMan}
+		WHERE
+			  B_ID=#{bId}
+
+	</update>
+
+	<delete id="delete01" parameterType="com.thymeleaf.test.vo.SurveyVo">
+		DELETE FROM
+			board
+		WHERE
+			B_ID=#{bId}
+	</delete>
+
+	<insert id="insert01" parameterType="com.thymeleaf.test.vo.SurveyVo">
+		INSERT INTO
+			BOARD(
+				  B_TITLE
+				, B_CONT
+				, B_MAN
+				)
+			VALUES(
+				  #{bTitle}
+				, #{bCont}
+				, #{bMan}
+				)
+	</insert>
+
+
+</mapper>
