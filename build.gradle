@@ -1,0 +1,56 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.10'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'com.thymeleaf'
+version = '6.9.4'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// Spring Security
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	testImplementation 'org.springframework.security:spring-security-test'
+
+	// 시큐리티 태그 라이브러리
+	implementation 'org.springframework.security:spring-security-taglibs'
+
+	// junit 같은걸 가져옴 (이거 지우면 Demo에서 import 했던 것들이 안먹힘)
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	// TOMCAT과 연결
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	// 편리한 ANNOTATION LOMBOK
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	// DB
+	// Maria DB
+	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+
+	// MyBatis
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.0'
+
+	// devtools (자동 리로드를 하기 위함 properties에서 설정함)
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+	// ThymeLeaf
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+	// ThymeLeaf Layout - Tiles 대체
+	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
+
+	// xls 엑셀 파일 읽기 쓰기
+    implementation 'org.apache.poi:poi:5.2.0'
+    implementation 'org.apache.poi:poi-ooxml:5.2.0'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

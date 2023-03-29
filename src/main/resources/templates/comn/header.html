@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<!-- 메뉴 -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+	<header th:fragment="header(menu)" class="p-3 text-bg-light mb-3">
+		<div class="container">
+			<div
+				class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+				<ul
+					class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+					<li><a href="/" class="nav-link px-2"
+						th:classappend="${menu} == 'Home' ? text-warning : text-muted">Home</a></li>
+					<li><a href="/board" class="nav-link px-2"
+						th:classappend="${menu} == 'Board' ? text-warning : text-muted">Board</a></li>
+					<li><a href="/survey" class="nav-link px-2"
+						th:classappend="${menu} == 'Survey' ? text-warning : text-muted">Survey</a></li>
+					<li><a href="/" class="nav-link px-2"
+						th:classappend="${menu} == 'Planner' ? text-warning : text-muted">Planner</a></li>
+					<li><a href="/market" class="nav-link px-2"
+						th:classappend="${menu} == 'Market' ? text-info : text-muted">Market</a></li>
+					<li><a href="/" class="nav-link px-2"
+						th:classappend="${menu} == 'Annual' ? text-warning : text-muted">Annual</a></li>
+					<li><a href="/file" class="nav-link px-2"
+						th:classappend="${menu} == 'Home' ? text-warning : text-muted">File</a></li>
+				</ul>
+
+				<div th:if="${session.userName == null}" class="text-end">
+					<button type="button" class="btn  me-2"
+						th:classappend="${menu} == 'Login' ? btn-dark : btn-outline-warning"
+						onclick="javascript:location.href='/login'">Login</button>
+					<button type="button" class="btn "
+						th:classappend="${menu} == 'SignUp' ? btn-dark : btn-warning"
+						onclick="javascript:location.href='/signUp'">Sign-up</button>
+				</div>
+				<div  th:if="${session.userName != null}" class="text-end">
+					<button type="button" class="btn "
+						th:classappend="${menu} == 'SignUp' ? btn-dark : btn-warning"
+						onclick="javascript:location.href='/logout'">Logout</button>
+				</div>
+
+			</div>
+		</div>
+	</header>
+</body>
+</html>
