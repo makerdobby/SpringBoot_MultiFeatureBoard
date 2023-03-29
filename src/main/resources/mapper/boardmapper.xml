@@ -12,6 +12,7 @@
 
 	<!-- [2023.03.29] 날짜 단순하게 변환하여 추가 -->
 	<select id="select04" resultType="com.thymeleaf.test.vo.BoardVo" parameterType="java.util.Map">
+
 		SELECT
 			 B_ID AS bId
 			,B_TITLE AS bTitle
