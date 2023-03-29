@@ -50,6 +50,7 @@ public class BoardController {
 		pageData.put("pageSize", pageSize);
 
 		List<BoardVo> voList = bService.getVoList(pageData);
+
 		mv.addObject("voList", voList);
 
 		// 전체 페이지

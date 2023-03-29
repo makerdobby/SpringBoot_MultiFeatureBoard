@@ -33,17 +33,20 @@
 			<table class="table table-hover w-50 m-auto">
 				<colgroup>
 					<col class="col-md-1"/>
+					<col class="col-md-4"/>
 					<col class="col-md-2"/>
 					<col class="col-md-8"/>
 				</colgroup>
 				<tr>
 					<th>번호</th>
+					<th>날짜</th> <!-- [2023.03.29] 날짜 추가 -->
 					<th>작성자</th>
 					<th>제목</th>
 				</tr>
 				<tbody class="text-secondary">
 					<tr th:each="vl : ${voList}">
 						<th th:text="${vl.bId}">번호</th>
+						<th th:text="${vl.bDt}">날짜</th> <!-- [2023.03.29] 날짜 추가 -->
 						<th th:text="${vl.bMan}">작성자</th>
 						<th><a class="link-secondary" th:text="${vl.bTitle}" th:href="@{/board/detail(bId=${vl.bId})}">제목</a></th>
 					</tr>
